@@ -1,3 +1,9 @@
+import java.sql.SQLOutput;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Thanos {
 
     public static void main(String[] args) {
@@ -17,14 +23,23 @@ public class Thanos {
         Flower rose = new Flower("Rose");
 
         // TODO 1 : Create a TreeMap where :
-        // Hulk, Thor and Scarlet Witch have a Rose
-        // Vision has a Tulip
-        // Captain America has a Lily
-        // Doctor Strange and Black Widow have a Violet
+
+        Map<Hero, Flower> party = new TreeMap<>(Comparator.comparing(Hero::getName));
+        party.put(hulk, rose);
+        party.put(thor, rose);
+        party.put(scarletWitch, rose);
+        party.put(vision, tulip);
+        party.put(captainAmerica, lily);
+        party.put(doctorStrange, violet);
+        party.put(blackWidow, violet);
 
         // TODO 2 : Print if `begonia` is contained in the TreeMap
-
+        System.out.println(party.containsValue(begonia));
         // TODO 3 : For each hero, alphabetically, print the corresponding flower
 
+        for (Map.Entry<Hero,Flower> map:party.entrySet()) {
+            Flower f = map.getValue();
+            System.out.println(f.getName());
+        }
     }
 }
